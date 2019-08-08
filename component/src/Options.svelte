@@ -1,5 +1,7 @@
 <script>
   export let options = [];
+  let selectedOption = undefined;
+  $: isSelected = option => option === selectedOption;
 </script>
 
 <style>
@@ -14,10 +16,13 @@
     border-radius: 1rem;
     cursor: pointer;
   }
+  .selected {
+    border-color: red;
+  }
 </style>
 
 <div class="options">
   {#each options as text (text)}
-    <div class="option">{text}</div>
+    <div class:selected={isSelected(text)} class="option">{text}</div>
   {/each}
 </div>
