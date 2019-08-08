@@ -16,6 +16,8 @@
   },
   "scripts": {
     "build": "rollup -c",
+    "build-only-component": "rollup -c ./rollup.config.only.component.js",
+    "zip": "zip -r ./dist.zip dist/Options.js ./dist/Options.css",
     "autobuild": "rollup -c -w",
     "dev": "run-p start:dev autobuild",
     "start": "sirv public --single",
