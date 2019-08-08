@@ -1,3 +1,7 @@
+<script>
+  export let options = [];
+</script>
+
 <style>
   .options {
     display: flex;
@@ -13,7 +17,7 @@
 </style>
 
 <div class="options">
-  <div class="option">Svelte</div>
-  <div class="option">React</div>
-  <div class="option">Vue</div>
+  {#each options as text (text)}
+    <div class="option">{text}</div>
+  {/each}
 </div>
