@@ -1,8 +1,11 @@
 <script>
   import { createEventDispatcher } from "svelte";
+  import Option from "./Option.svelte";
 
   export let options = [];
+
   let selectedOption = undefined;
+
   $: isSelected = option => option === selectedOption;
 
   const dispatch = createEventDispatcher();
@@ -17,25 +20,10 @@
     display: flex;
     flex-direction: column;
   }
-  .option {
-    font-size: 4rem;
-    padding: 0.5rem;
-    border: 3px solid transparent;
-    border-radius: 1rem;
-    cursor: pointer;
-  }
-  .selected {
-    border-color: red;
-  }
 </style>
 
 <div class="options">
   {#each options as text (text)}
-    <div
-      on:click={event => select(text)}
-      class:selected={isSelected(text)}
-      class="option">
-      {text}
-    </div>
+    <Option on:select={() => select(text)} selected={isSelected(text)} {text} />
   {/each}
 </div>
