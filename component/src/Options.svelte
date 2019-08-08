@@ -2,6 +2,9 @@
   export let options = [];
   let selectedOption = undefined;
   $: isSelected = option => option === selectedOption;
+  function select(option) {
+    selectedOption = option;
+  }
 </script>
 
 <style>
@@ -23,6 +26,11 @@
 
 <div class="options">
   {#each options as text (text)}
-    <div class:selected={isSelected(text)} class="option">{text}</div>
+    <div
+      on:click={event => select(text)}
+      class:selected={isSelected(text)}
+      class="option">
+      {text}
+    </div>
   {/each}
 </div>
