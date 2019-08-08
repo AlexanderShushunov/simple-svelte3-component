@@ -1,9 +1,14 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+
   export let options = [];
   let selectedOption = undefined;
   $: isSelected = option => option === selectedOption;
+
+  const dispatch = createEventDispatcher();
   function select(option) {
     selectedOption = option;
+    dispatch("select", option);
   }
 </script>
 
